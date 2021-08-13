@@ -1,15 +1,5 @@
 FROM node:lts-alpine3.10
 
-#Define the work directory path
-WORKDIR /server
+WORKDIR /server/
 
-#Copy configuration files to work directory
-COPY package*.json ./
-COPY tsconfig.json ./
-#Copy the source code to work directory
-COPY src/ /server/src/
-
-#Installing the dependencies inside the Docker
-RUN npm install
-
-EXPOSE 5050
+CMD [ -d "node_modules" ] && npm start || npm ci && npm start

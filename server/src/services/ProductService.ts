@@ -67,21 +67,11 @@ class ProductService {
     }
   }
 
-  async listProducts() {
+  async listProducts(query: {} = {}) {
     try {
-      const products = await Product.find({ quantity: { $gt: 0 } });
+      const products = await Product.find(query);
 
       return products;
-    } catch (error) {
-      throw new Error(error.message);
-    }
-  }
-
-  async listStock() {
-    try {
-      const stock = await Product.find();
-
-      return stock;
     } catch (error) {
       throw new Error(error.message);
     }

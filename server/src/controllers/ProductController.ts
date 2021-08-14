@@ -66,22 +66,21 @@ class ProductController {
   }
 
   async listProducts(req: Request, res: Response): Promise<Response> {
-    try {
-      const products = ProductService.listProducts();
+    const { filter } = req.params;
 
-      return res
-        .status(200)
-        .json({ message: "Found available products", products });
-    } catch (error) {
-      return res.status(400).json(error.message);
+    let query: {} = {};
+
+    if (filter === "available") {
+      query = {
+        quantity: { $gt: 0 },
+      };
+    } else if (filter === "stock") {
+      query = {};
     }
-  }
-
-  async listStock(req: Request, res: Response): Promise<Response> {
     try {
-      const stock = ProductService.listStock();
+      const products = await ProductService.listProducts(query);
 
-      return res.status(200).json({ message: "Found all products", stock });
+      return res.status(200).json({ message: "Found products", products });
     } catch (error) {
       return res.status(400).json(error.message);
     }

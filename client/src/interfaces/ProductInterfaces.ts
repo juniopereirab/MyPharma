@@ -4,7 +4,7 @@ export interface IProductCreate {
   description: string;
   price: number;
   quantity: number;
-  image?: Blob;
+  image: Blob | null;
 }
 
 export interface IProductUpdate {
@@ -13,4 +13,15 @@ export interface IProductUpdate {
   price?: number;
   quantity?: number;
   image?: Blob;
+}
+
+export interface IProduct {
+  _id: string;
+  bar_code: string;
+  name: string;
+  description: string;
+  price: number;
+  quantity: number;
+  image: string;
+  __v: number;
 }

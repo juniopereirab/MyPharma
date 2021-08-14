@@ -1,0 +1,28 @@
+label#photo {
+  display: block;
+  width: 350px;
+  height: 200px;
+  background: #c4c4c4;
+  background-size: cover;
+  cursor: pointer;
+  border-radius: 5px;
+  border: 1px solid #050505;
+  margin: 10px 0;
+
+  input {
+    display: none;
+  }
+
+  .without-photo {
+    width: 350px;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #050505;
+  }
+
+  .has-photo {
+    display: none;
+  }
+}

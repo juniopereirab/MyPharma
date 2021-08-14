@@ -1,6 +1,7 @@
 import React from "react";
 import "./styles.scss";
 import formatter from "../../utils/formatCurrency";
+import Placeholder from "../../assets/images/placeholder-image.jpg";
 
 interface ProductCardProps {
   image: string;
@@ -19,7 +20,10 @@ const ProductCard: React.FC<ProductCardProps> = ({
 }) => {
   return (
     <div className="product-card">
-      <img src={image} alt="product asset" />
+      <img
+        src={image ? `http://localhost:3333/files/${image}` : Placeholder}
+        alt="product asset"
+      />
       <div className="product-information">
         <span>{title}</span>
         {isStock ? (

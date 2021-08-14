@@ -3,7 +3,8 @@ import ProductService from "../services/ProductService";
 
 class ProductController {
   async create(req: Request, res: Response): Promise<Response> {
-    const { bar_code, name, description, price, quantity, image } = req.body;
+    const { bar_code, name, description, price, quantity } = req.body;
+    const filename: string | undefined = req.file?.filename;
     try {
       const product = await ProductService.create({
         bar_code,
@@ -11,7 +12,7 @@ class ProductController {
         description,
         price,
         quantity,
-        image,
+        image: filename,
       });
 
       return res
@@ -23,7 +24,7 @@ class ProductController {
   }
 
   async update(req: Request, res: Response): Promise<Response> {
-    const { bar_code, name, description, price, quantity, image } = req.body;
+    const { name, description, price, quantity, image } = req.body;
     const { productId } = req.params;
     try {
       const newProduct = await ProductService.update(productId, {

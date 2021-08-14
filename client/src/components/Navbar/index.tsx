@@ -5,11 +5,11 @@ import "./styles.scss";
 import { BaseSyntheticEvent, useState } from "react";
 
 interface NavbarProps {
-  page: string;
+  page?: string;
   isMainPage?: boolean;
 }
 
-const Navbar: React.FC<NavbarProps> = ({ page, isMainPage = true }) => {
+const Navbar: React.FC<NavbarProps> = ({ page = "", isMainPage = true }) => {
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [inputVisible, setInputVisible] = useState<boolean>(false);
 

@@ -1,0 +1,31 @@
+.navbar {
+  width: 100%;
+  height: 70px;
+  background: #fafafa;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  border-bottom: 1px solid #000;
+
+  img {
+    width: 60px;
+    height: 60px;
+  }
+
+  .navbar-input {
+    display: block;
+    width: 240px;
+    height: 40px;
+    padding: 0 5px;
+  }
+
+  .invisible {
+    display: none;
+  }
+
+  .navbar-buttons-container {
+    width: 240px;
+    display: flex;
+    justify-content: space-around;
+  }
+}

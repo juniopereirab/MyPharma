@@ -24,7 +24,7 @@ const Stock: React.FC = () => {
   }, []);
   return (
     <>
-      <Navbar page="Estoque" />
+      <Navbar page="Estoque" isStockPage={true} setProducts={setStock} />
       <div className="product-scroll">
         <div className="product-buttons">
           <Link to="/create-product">

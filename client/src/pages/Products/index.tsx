@@ -19,7 +19,7 @@ const Products: React.FC = () => {
   }, []);
   return (
     <>
-      <Navbar page="Produtos" />
+      <Navbar page="Produtos" setProducts={setProducts} />
       <div className="product-scroll">
         <div className="product-list">
           {products.map(({ _id, image, name, price }, index) => (

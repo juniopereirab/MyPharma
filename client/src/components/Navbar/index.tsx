@@ -4,21 +4,44 @@ import { AiOutlineSearch } from "react-icons/ai";
 import "./styles.scss";
 import { BaseSyntheticEvent, useState } from "react";
 import { Link } from "react-router-dom";
+import { IProduct } from "../../interfaces/ProductInterfaces";
+import ProductService from "../../services/product";
 
 interface NavbarProps {
   page?: string;
   isMainPage?: boolean;
+  setProducts?: React.Dispatch<React.SetStateAction<IProduct[]>>;
+  isStockPage?: boolean;
 }
 
-const Navbar: React.FC<NavbarProps> = ({ page = "", isMainPage = true }) => {
+const Navbar: React.FC<NavbarProps> = ({
+  page = "",
+  isMainPage = true,
+  isStockPage = false,
+  setProducts,
+}) => {
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [inputVisible, setInputVisible] = useState<boolean>(false);
 
-  const handleSearch = () => {
+  const handleSearch = async () => {
+    const query = isStockPage ? "stock" : "available";
     if (!inputVisible) {
       setInputVisible(true);
     } else {
-      // Fazer a busca.
+      const response = await ProductService.listProducts(query);
+      const filteredResults = response.products.filter(
+        (product: IProduct) =>
+          product.name.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1 ||
+          product.description
+            .toLowerCase()
+            .indexOf(searchTerm.toLowerCase()) !== -1 ||
+          product.bar_code.toLowerCase().indexOf(searchTerm.toLowerCase()) !==
+            -1
+      );
+      if (setProducts) {
+        setProducts(filteredResults.reverse());
+      }
+
       setInputVisible(false);
     }
   };

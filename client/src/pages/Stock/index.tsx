@@ -9,10 +9,11 @@ import { IProduct } from "../../interfaces/ProductInterfaces";
 
 import ProductService from "../../services/product";
 import { Link } from "react-router-dom";
+import FilterModal from "../../components/FilterModal";
 
 const Stock: React.FC = () => {
   const [stock, setStock] = useState<Array<IProduct>>([]);
-  const [filterModal, setFilterModal] = useState<boolean>(false);
+  const [filterModalVisible, setFilterModalVisible] = useState<boolean>(false);
 
   useEffect(() => {
     const getStock = async () => {
@@ -29,7 +30,7 @@ const Stock: React.FC = () => {
           <Link to="/create-product">
             <Button>Cadastrar produto</Button>
           </Link>
-          <FilterButton onClick={() => setFilterModal(true)} />
+          <FilterButton onClick={() => setFilterModalVisible(true)} />
         </div>
         <div className="product-list">
           {stock.map(({ _id, image, name, price, quantity }, index) => (
@@ -46,7 +47,12 @@ const Stock: React.FC = () => {
           ))}
         </div>
       </div>
-      {filterModal ? <h1>HELLO</h1> : null}
+      {filterModalVisible ? (
+        <FilterModal
+          onClose={() => setFilterModalVisible(false)}
+          setStock={setStock}
+        />
+      ) : null}
     </>
   );
 };

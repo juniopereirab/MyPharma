@@ -66,6 +66,26 @@ class ProductService {
       throw new Error(error.message);
     }
   }
+
+  async listProducts() {
+    try {
+      const products = await Product.find({ quantity: { $gt: 0 } });
+
+      return products;
+    } catch (error) {
+      throw new Error(error.message);
+    }
+  }
+
+  async listStock() {
+    try {
+      const stock = await Product.find();
+
+      return stock;
+    } catch (error) {
+      throw new Error(error.message);
+    }
+  }
 }
 
 export default new ProductService();

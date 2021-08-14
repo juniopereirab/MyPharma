@@ -64,6 +64,28 @@ class ProductController {
       return res.status(400).json(error.message);
     }
   }
+
+  async listProducts(req: Request, res: Response): Promise<Response> {
+    try {
+      const products = ProductService.listProducts();
+
+      return res
+        .status(200)
+        .json({ message: "Found available products", products });
+    } catch (error) {
+      return res.status(400).json(error.message);
+    }
+  }
+
+  async listStock(req: Request, res: Response): Promise<Response> {
+    try {
+      const stock = ProductService.listStock();
+
+      return res.status(200).json({ message: "Found all products", stock });
+    } catch (error) {
+      return res.status(400).json(error.message);
+    }
+  }
 }
 
 export default ProductController;

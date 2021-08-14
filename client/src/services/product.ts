@@ -20,7 +20,7 @@ class ProductService {
   async update(productId: string, dataToUpdate: IProductUpdate) {
     const data = setFormData(dataToUpdate);
     try {
-      const response = await api.patch(`/product/${productId}`, data);
+      const response = await api.patch(`/product/edit/${productId}`, data);
       return response.data;
     } catch (error) {
       throw new Error(error);
@@ -48,6 +48,15 @@ class ProductService {
   async listProducts(query: string) {
     try {
       const response = await api.get(`/product/filter/${query}`);
+      return response.data;
+    } catch (error) {
+      throw new Error(error);
+    }
+  }
+
+  async buy(productId: string) {
+    try {
+      const response = await api.patch(`/product/buy/${productId}`);
       return response.data;
     } catch (error) {
       throw new Error(error);

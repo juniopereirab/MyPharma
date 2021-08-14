@@ -24,7 +24,7 @@ class ProductController {
   }
 
   async update(req: Request, res: Response): Promise<Response> {
-    const { name, description, price, quantity } = req.body;
+    const { name, description, price, quantity, image } = req.body;
     const filename: string | undefined = req.file?.filename;
     const { productId } = req.params;
 
@@ -35,7 +35,7 @@ class ProductController {
         description,
         price,
         quantity,
-        image: filename,
+        image: filename ? filename : image,
       });
 
       return res
@@ -85,6 +85,20 @@ class ProductController {
       const products = await ProductService.listProducts(query);
 
       return res.status(200).json({ message: "Found products", products });
+    } catch (error) {
+      return res.status(400).json(error.message);
+    }
+  }
+
+  async buy(req: Request, res: Response): Promise<Response> {
+    const { productId } = req.params;
+
+    try {
+      const updateProduct = await ProductService.buy(productId);
+
+      return res
+        .status(200)
+        .json({ message: "Buy product occured successfully", updateProduct });
     } catch (error) {
       return res.status(400).json(error.message);
     }

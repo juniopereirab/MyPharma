@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import "./styles.scss";
 
 import ProductService from "../../services/product";
@@ -10,6 +10,7 @@ import formatter from "../../utils/formatCurrency";
 import Button from "../../components/Button";
 
 const ProductDetail: React.FC = () => {
+  const history = useHistory();
   const { id }: { id: string } = useParams();
   const [product, setProduct] = useState<IProduct>();
 
@@ -20,6 +21,12 @@ const ProductDetail: React.FC = () => {
     };
     getData();
   }, [id]);
+
+  const handleBuy = async () => {
+    await ProductService.buy(id);
+    history.push("/");
+  };
+
   return (
     <>
       <Navbar isMainPage={false} />
@@ -42,7 +49,7 @@ const ProductDetail: React.FC = () => {
           </div>
           <div className="product-detail-button">
             <span>Quantidade: {product?.quantity}</span>
-            <Button>Comprar</Button>
+            <Button onClick={() => handleBuy()}>Comprar</Button>
           </div>
         </div>
       </div>

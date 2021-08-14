@@ -37,13 +37,8 @@ const EditProduct: React.FC = () => {
       price: price / 100,
       description,
       quantity,
+      image,
     };
-    if (typeof image === "object") {
-      dataToUpdate = {
-        ...dataToUpdate,
-        image,
-      };
-    }
 
     await ProductService.update(id, dataToUpdate);
     history.push("/stock");

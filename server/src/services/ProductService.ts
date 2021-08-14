@@ -76,6 +76,23 @@ class ProductService {
       throw new Error(error.message);
     }
   }
+
+  async buy(productId: string) {
+    try {
+      const product = await Product.findById(productId);
+      if (!product) {
+        throw new Error("Product not found");
+      }
+
+      const updated = await product.updateOne({
+        quantity: product.quantity - 1,
+      });
+
+      return updated;
+    } catch (error) {
+      throw new Error(error.message);
+    }
+  }
 }
 
 export default new ProductService();

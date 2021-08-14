@@ -1,8 +1,14 @@
 .product-card {
   width: 350px;
   height: 300px;
-  border: 1px solid #000;
+  border: 1px solid #c4c4c4;
   margin: 0 0 10px 0;
+  border-radius: 5px;
+  transition: all 0.8s;
+
+  &:hover {
+    border: 1px solid #000;
+  }
 
   img {
     width: 350px;

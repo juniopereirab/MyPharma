@@ -5,6 +5,9 @@ import "./styles.scss";
 import ProductService from "../../services/product";
 import { IProduct } from "../../interfaces/ProductInterfaces";
 import Navbar from "../../components/Navbar";
+import Placeholder from "../../assets/images/placeholder-image.jpg";
+import formatter from "../../utils/formatCurrency";
+import Button from "../../components/Button";
 
 const ProductDetail: React.FC = () => {
   const { id }: { id: string } = useParams();
@@ -21,7 +24,27 @@ const ProductDetail: React.FC = () => {
     <>
       <Navbar isMainPage={false} />
       <div className="product-detail-scroll">
-        <div className="product-detail-container"></div>
+        <div className="product-detail-container">
+          <img
+            src={
+              product?.image
+                ? `http://localhost:3333/files/${product.image}`
+                : Placeholder
+            }
+            alt="product asset"
+          />
+          <div className="product-detail-info">
+            <div className="product-detail-info-title">
+              <span>{product?.name}</span>
+              <span>{formatter.format(Number(product?.price))}</span>
+            </div>
+            <p>{product?.description}</p>
+          </div>
+          <div className="product-detail-button">
+            <span>Quantidade: {product?.quantity}</span>
+            <Button>Comprar</Button>
+          </div>
+        </div>
       </div>
     </>
   );

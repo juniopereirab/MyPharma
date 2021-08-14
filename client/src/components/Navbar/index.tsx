@@ -3,6 +3,7 @@ import Buttons from "./Buttons";
 import { AiOutlineSearch } from "react-icons/ai";
 import "./styles.scss";
 import { BaseSyntheticEvent, useState } from "react";
+import { Link } from "react-router-dom";
 
 interface NavbarProps {
   page?: string;
@@ -39,7 +40,9 @@ const Navbar: React.FC<NavbarProps> = ({ page = "", isMainPage = true }) => {
   };
   return (
     <div className="navbar">
-      <img src={Icon} alt="my pharma icon" />
+      <Link to="/">
+        <img src={Icon} alt="my pharma icon" />
+      </Link>
       <div className={inputVisible ? "invisible" : "navbar-buttons-container"}>
         <Buttons currentPage={page} />
       </div>

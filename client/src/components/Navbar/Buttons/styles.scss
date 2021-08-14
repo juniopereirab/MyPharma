@@ -4,6 +4,11 @@
   height: 40px;
   background: #fafafa;
   font-size: 25px;
+
+  &:hover {
+    cursor: pointer;
+    text-decoration: underline;
+  }
 }
 
 .selected {

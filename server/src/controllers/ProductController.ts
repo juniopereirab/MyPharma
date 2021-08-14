@@ -27,7 +27,6 @@ class ProductController {
     const { productId } = req.params;
     try {
       const newProduct = await ProductService.update(productId, {
-        bar_code,
         name,
         description,
         price,
@@ -77,6 +76,7 @@ class ProductController {
     } else if (filter === "stock") {
       query = {};
     }
+
     try {
       const products = await ProductService.listProducts(query);
 

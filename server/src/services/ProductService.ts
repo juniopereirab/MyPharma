@@ -67,7 +67,7 @@ class ProductService {
     }
   }
 
-  async listProducts(query: {} = {}) {
+  async listProducts(query: {}) {
     try {
       const products = await Product.find(query);
 

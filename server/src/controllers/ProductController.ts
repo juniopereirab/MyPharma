@@ -24,15 +24,18 @@ class ProductController {
   }
 
   async update(req: Request, res: Response): Promise<Response> {
-    const { name, description, price, quantity, image } = req.body;
+    const { name, description, price, quantity } = req.body;
+    const filename: string | undefined = req.file?.filename;
     const { productId } = req.params;
+
+    console.log(name, description, price, quantity, filename, productId);
     try {
       const newProduct = await ProductService.update(productId, {
         name,
         description,
         price,
         quantity,
-        image,
+        image: filename,
       });
 
       return res

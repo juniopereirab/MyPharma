@@ -11,7 +11,7 @@ const productController = new ProductController();
 router.post("/", upload.single("image"), productController.create);
 router.get("/filter/:filter", productController.listProducts);
 router.get("/getById/:productId", productController.read);
-router.patch("/:productId", productController.update);
+router.patch("/:productId", upload.single("image"), productController.update);
 router.delete("/:productId", productController.delete);
 
 export default router;

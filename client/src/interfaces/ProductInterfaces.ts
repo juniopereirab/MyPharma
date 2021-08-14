@@ -12,7 +12,7 @@ export interface IProductUpdate {
   description?: string;
   price?: number;
   quantity?: number;
-  image?: Blob;
+  image?: Blob | null;
 }
 
 export interface IProduct {

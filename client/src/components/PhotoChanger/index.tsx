@@ -4,13 +4,17 @@ import { AiFillCamera } from "react-icons/ai";
 import "./styles.scss";
 
 interface PhotoChangerProps {
-  value: Blob | null;
+  value?: Blob | string | null;
   onChange: (e: BaseSyntheticEvent) => void;
 }
 
 const PhotoChanger: React.FC<PhotoChangerProps> = ({ value, onChange }) => {
   const preview = useMemo(() => {
-    return value ? URL.createObjectURL(value) : null;
+    if (typeof value === "object") {
+      return value ? URL.createObjectURL(value) : null;
+    } else if (typeof value === "string") {
+      return `http://localhost:3333/files/${value}`;
+    }
   }, [value]);
   return (
     <label id="photo" style={{ backgroundImage: `url(${preview})` }}>

@@ -32,15 +32,17 @@ const Stock: React.FC = () => {
           <FilterButton onClick={() => setFilterModal(true)} />
         </div>
         <div className="product-list">
-          {stock.map(({ image, name, price, quantity }, index) => (
-            <ProductCard
-              key={index}
-              image={image}
-              title={name}
-              price={price}
-              isStock={true}
-              quantity={quantity}
-            />
+          {stock.map(({ _id, image, name, price, quantity }, index) => (
+            <Link to={`/edit-product/${_id}`} key={index}>
+              <ProductCard
+                key={index}
+                image={image}
+                title={name}
+                price={price}
+                isStock={true}
+                quantity={quantity}
+              />
+            </Link>
           ))}
         </div>
       </div>

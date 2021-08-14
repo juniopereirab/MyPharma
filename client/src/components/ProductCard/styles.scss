@@ -1,0 +1,28 @@
+.product-card {
+  width: 350px;
+  height: 300px;
+  border: 1px solid #000;
+  margin: 0 0 10px 0;
+
+  img {
+    width: 350px;
+    height: 220px;
+  }
+
+  .product-information {
+    display: flex;
+    width: 350px;
+    height: 70px;
+    justify-content: space-around;
+    align-items: center;
+
+    span {
+      font-size: 25px;
+      font-weight: bold;
+    }
+
+    span#quantity-information {
+      font-size: 20px;
+    }
+  }
+}

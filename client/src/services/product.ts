@@ -38,7 +38,7 @@ class ProductService {
 
   async read(productId: string) {
     try {
-      const response = await api.get(`/product/${productId}`);
+      const response = await api.get(`/product/getById/${productId}`);
       return response.data;
     } catch (error) {
       throw new Error(error);
@@ -47,7 +47,7 @@ class ProductService {
 
   async listProducts(query: string) {
     try {
-      const response = await api.get(`/product/${query}`);
+      const response = await api.get(`/product/filter/${query}`);
       return response.data;
     } catch (error) {
       throw new Error(error);

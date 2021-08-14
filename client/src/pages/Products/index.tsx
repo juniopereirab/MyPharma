@@ -5,6 +5,7 @@ import ProductCard from "../../components/ProductCard";
 import { IProduct } from "../../interfaces/ProductInterfaces";
 
 import ProductService from "../../services/product";
+import { Link } from "react-router-dom";
 
 const Products: React.FC = () => {
   const [products, setProducts] = useState<Array<IProduct>>([]);
@@ -21,8 +22,15 @@ const Products: React.FC = () => {
       <Navbar page="Produtos" />
       <div className="product-scroll">
         <div className="product-list">
-          {products.map(({ image, name, price }, index) => (
-            <ProductCard key={index} image={image} title={name} price={price} />
+          {products.map(({ _id, image, name, price }, index) => (
+            <Link key={index} to={`/product/${_id}`}>
+              <ProductCard
+                key={index}
+                image={image}
+                title={name}
+                price={price}
+              />
+            </Link>
           ))}
         </div>
       </div>

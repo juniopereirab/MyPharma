@@ -4,6 +4,7 @@ import cors from "cors";
 import mongoose from "mongoose";
 import path from "path";
 import router from "./routes";
+import seed from "./utils/seed";
 
 const app = express();
 
@@ -26,6 +27,13 @@ mongoose.connect(
     }
   }
 );
+
+//Função para semear o banco de dados com alguns produtos.
+seed()
+  .then(() => {
+    console.log("Products populated successfully");
+  })
+  .catch((error) => console.log(error.message));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

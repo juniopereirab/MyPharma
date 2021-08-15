@@ -46,10 +46,10 @@ const ProductDetail: React.FC = () => {
               <span>{formatter.format(Number(product?.price))}</span>
             </div>
             <p>{product?.description}</p>
-          </div>
-          <div className="product-detail-button">
-            <span>Quantidade: {product?.quantity}</span>
-            <Button onClick={() => handleBuy()}>Comprar</Button>
+            <div className="product-detail-button">
+              <span>Quantidade: {product?.quantity}</span>
+              <Button onClick={() => handleBuy()}>Comprar</Button>
+            </div>
           </div>
         </div>
       </div>

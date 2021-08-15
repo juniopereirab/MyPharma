@@ -3,6 +3,7 @@
   overflow-y: auto;
   .create-product-container {
     display: flex;
+    padding: 10px;
     textarea {
       background-color: #fff;
       padding: 5px;
@@ -34,6 +35,7 @@
 
         .create-buttons {
           display: flex;
+          justify-content: center;
         }
       }
     }

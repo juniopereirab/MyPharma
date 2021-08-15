@@ -2,11 +2,7 @@ import Icon from "../../assets/images/icon.png";
 import Buttons from "./Buttons";
 import { AiOutlineSearch } from "react-icons/ai";
 import "./styles.scss";
-import React, {
-  BaseSyntheticEvent,
-  KeyboardEventHandler,
-  useState,
-} from "react";
+import React, { BaseSyntheticEvent, useState } from "react";
 import { Link } from "react-router-dom";
 import { IProduct } from "../../interfaces/ProductInterfaces";
 import ProductService from "../../services/product";

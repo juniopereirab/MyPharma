@@ -55,45 +55,53 @@ const EditProduct: React.FC = () => {
       <Navbar isMainPage={false} />
       <div className="edit-product-scroll">
         <div className="edit-product-container">
-          <PhotoChanger
-            value={image}
-            onChange={(e: BaseSyntheticEvent) => setImage(e.target.files[0])}
-          />
-          <Input
-            type="text"
-            value={name}
-            onChange={(e: BaseSyntheticEvent) => setName(e.target.value)}
-            placeholder="Nome do Produto"
-          />
-          <CurrencyInput
-            value={price}
-            max={100000000}
-            onValueChange={(value: number) => {
-              setPrice(value);
-            }}
-            placeholder="Preço"
-          />
-          <textarea
-            placeholder="Descrição do Produto"
-            rows={5}
-            value={description}
-            onChange={(e: BaseSyntheticEvent) => setDescription(e.target.value)}
-          />
-          <Input
-            type="number"
-            value={quantity}
-            onChange={(e: BaseSyntheticEvent) => setQuantity(e.target.value)}
-            placeholder="Quantidade do Produto"
-          />
-          <Button onClick={(e: BaseSyntheticEvent) => handleSubmit(e)}>
-            Editar
-          </Button>
-          <Button
-            color="#FF7777"
-            onClick={(e: BaseSyntheticEvent) => handleDelete(e)}
-          >
-            Deletar
-          </Button>
+          <div className="edit-photo">
+            <PhotoChanger
+              value={image}
+              onChange={(e: BaseSyntheticEvent) => setImage(e.target.files[0])}
+            />
+          </div>
+          <div className="edit-form">
+            <Input
+              type="text"
+              value={name}
+              onChange={(e: BaseSyntheticEvent) => setName(e.target.value)}
+              placeholder="Nome do Produto"
+            />
+            <CurrencyInput
+              value={price}
+              max={100000000}
+              onValueChange={(value: number) => {
+                setPrice(value);
+              }}
+              placeholder="Preço"
+            />
+            <textarea
+              placeholder="Descrição do Produto"
+              rows={5}
+              value={description}
+              onChange={(e: BaseSyntheticEvent) =>
+                setDescription(e.target.value)
+              }
+            />
+            <Input
+              type="number"
+              value={quantity}
+              onChange={(e: BaseSyntheticEvent) => setQuantity(e.target.value)}
+              placeholder="Quantidade do Produto"
+            />
+            <div className="edit-buttons">
+              <Button onClick={(e: BaseSyntheticEvent) => handleSubmit(e)}>
+                Editar
+              </Button>
+              <Button
+                color="#FF7777"
+                onClick={(e: BaseSyntheticEvent) => handleDelete(e)}
+              >
+                Deletar
+              </Button>
+            </div>
+          </div>
         </div>
       </div>
     </>

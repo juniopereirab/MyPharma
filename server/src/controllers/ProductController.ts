@@ -28,7 +28,6 @@ class ProductController {
     const filename: string | undefined = req.file?.filename;
     const { productId } = req.params;
 
-    console.log(name, description, price, quantity, filename, productId);
     try {
       const newProduct = await ProductService.update(productId, {
         name,

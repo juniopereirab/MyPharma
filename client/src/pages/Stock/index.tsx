@@ -25,14 +25,14 @@ const Stock: React.FC = () => {
   return (
     <>
       <Navbar page="Estoque" isStockPage={true} setProducts={setStock} />
-      <div className="product-scroll">
-        <div className="product-buttons">
+      <div className="stock-scroll">
+        <div className="stock-buttons">
           <Link to="/create-product">
             <Button>Cadastrar produto</Button>
           </Link>
           <FilterButton onClick={() => setFilterModalVisible(true)} />
         </div>
-        <div className="product-list">
+        <div className="stock-list">
           {stock.map(({ _id, image, name, price, quantity }, index) => (
             <Link to={`/edit-product/${_id}`} key={index}>
               <ProductCard

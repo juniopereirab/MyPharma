@@ -1,5 +1,5 @@
 import React, { BaseSyntheticEvent, useState } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import Button from "../../components/Button";
 import CurrencyInput from "../../components/CurrencyInput";
 import Input from "../../components/Input";
@@ -36,48 +36,56 @@ const CreateProduct: React.FC = () => {
       <Navbar isMainPage={false} />
       <div className="create-product-scroll">
         <div className="create-product-container">
-          <PhotoChanger
-            value={image}
-            onChange={(e: BaseSyntheticEvent) => setImage(e.target.files[0])}
-          />
-          <Input
-            type="text"
-            value={name}
-            onChange={(e: BaseSyntheticEvent) => setName(e.target.value)}
-            placeholder="Nome do Produto"
-          />
-          <CurrencyInput
-            value={price}
-            max={100000000}
-            onValueChange={(value: number) => {
-              setPrice(value);
-            }}
-            placeholder="Preço"
-          />
-          <textarea
-            placeholder="Descrição do Produto"
-            rows={5}
-            value={description}
-            onChange={(e: BaseSyntheticEvent) => setDescription(e.target.value)}
-          />
-          <Input
-            type="number"
-            value={quantity}
-            onChange={(e: BaseSyntheticEvent) => setQuantity(e.target.value)}
-            placeholder="Quantidade do Produto"
-          />
-          <Input
-            type="text"
-            value={barCode}
-            onChange={(e: BaseSyntheticEvent) => setBarCode(e.target.value)}
-            placeholder="Código de Barra"
-          />
-          <Button onClick={(e: BaseSyntheticEvent) => handleSubmit(e)}>
-            Confirmar
-          </Button>
-          <Link to="/stock">
-            <Button color="#FF7777">Voltar</Button>
-          </Link>
+          <div className="create-photo">
+            <PhotoChanger
+              value={image}
+              onChange={(e: BaseSyntheticEvent) => setImage(e.target.files[0])}
+            />
+          </div>
+          <div className="create-form">
+            <Input
+              type="text"
+              value={name}
+              onChange={(e: BaseSyntheticEvent) => setName(e.target.value)}
+              placeholder="Nome do Produto"
+            />
+            <CurrencyInput
+              value={price}
+              max={100000000}
+              onValueChange={(value: number) => {
+                setPrice(value);
+              }}
+              placeholder="Preço"
+            />
+            <textarea
+              placeholder="Descrição do Produto"
+              rows={5}
+              value={description}
+              onChange={(e: BaseSyntheticEvent) =>
+                setDescription(e.target.value)
+              }
+            />
+            <Input
+              type="number"
+              value={quantity}
+              onChange={(e: BaseSyntheticEvent) => setQuantity(e.target.value)}
+              placeholder="Quantidade do Produto"
+            />
+            <Input
+              type="text"
+              value={barCode}
+              onChange={(e: BaseSyntheticEvent) => setBarCode(e.target.value)}
+              placeholder="Código de Barra"
+            />
+            <div className="create-buttons">
+              <Button onClick={(e: BaseSyntheticEvent) => handleSubmit(e)}>
+                Confirmar
+              </Button>
+              <Button color="#FF7777" onClick={() => history.push("/stock")}>
+                Voltar
+              </Button>
+            </div>
+          </div>
         </div>
       </div>
     </>

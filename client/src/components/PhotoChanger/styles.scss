@@ -1,7 +1,7 @@
 label#photo {
+  width: 100%;
+  height: 80vh;
   display: block;
-  width: 350px;
-  height: 200px;
   background: #c4c4c4;
   background-size: cover;
   cursor: pointer;
@@ -14,8 +14,8 @@ label#photo {
   }
 
   .without-photo {
-    width: 350px;
-    height: 200px;
+    width: 100%;
+    height: 80vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -24,5 +24,29 @@ label#photo {
 
   .has-photo {
     display: none;
+  }
+}
+
+@media (max-width: 730px) {
+  label#photo {
+    width: 350px;
+    height: 200px;
+
+    .without-photo {
+      width: 350px;
+      height: 200px;
+    }
+  }
+}
+
+@media (min-width: 730px) and (max-width: 1100px) {
+  label#photo {
+    width: 450px;
+    height: 350px;
+
+    .without-photo {
+      width: 450px;
+      height: 350px;
+    }
   }
 }
